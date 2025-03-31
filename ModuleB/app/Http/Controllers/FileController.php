@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class FormattedPackage {
+    public string $path;
     public string $title;
     public string $highlights;
     public string $departureDates;
@@ -37,6 +38,7 @@ class FileController extends Controller
                 } else if (str_contains($file, "info.md")) {
                     $readFile = self::handleFile($file);
 
+                    $formattedPackage->path = $file;
                     $formattedPackage->title = $readFile['title'];
                     $formattedPackage->highlights = $readFile['highlights'];
                     $formattedPackage->departureDates = $readFile['departureDates'];
