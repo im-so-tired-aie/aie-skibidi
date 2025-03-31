@@ -10,10 +10,16 @@ class TourPackageController extends Controller
     public function index() {
         $folders = [];
         $retrievedFolders = Storage::disk('public')->directories('resources');
+
         foreach ($retrievedFolders as $folder) {
             $folderName = explode("/", $folder)[1];
             $folders[$folderName] = FileController::parseDirectory($folder);
         }
+
+        dd($folders);
+        return view("tourpackage.index", [
+            "folders" => $folders
+        ]);
     }
 
     public function show() {
