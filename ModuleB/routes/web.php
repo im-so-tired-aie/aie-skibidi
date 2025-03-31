@@ -10,3 +10,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [TourPackageController::class, 'index']);
 Route::get('/create', [TourPackageController::class, 'create']);
 Route::post('/store', [TourPackageController::class, 'store']);
+Route::get('/{path}', [TourPackageController::class, 'show'])->where('path', '(.*)');

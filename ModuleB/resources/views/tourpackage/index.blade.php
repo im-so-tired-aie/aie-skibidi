@@ -14,7 +14,6 @@
     <div class="container">
         <div class="flex-row">
             <h1>Explore Our Tours</h1>
-            <div></div>
         </div>
 
         <h2>Tours</h2>

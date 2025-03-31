@@ -7,13 +7,13 @@
 
 **Duration**: 4 Days / 3 Nights
 
-**Cost**: Starting from $899 per person
+**Cost**: $899
 <!-- End of front matter -->
 
-## About Singapore
+# About Singapore
 Singapore is a vibrant and modern city-state known for its stunning skyline, diverse culture, and excellent hospitality. From iconic landmarks to lush green parks, it offers a perfect mix of urban sophistication and natural beauty.
 
-### Itinerary
+## Itinerary
 
 **Day 1**: Arrival and Marina Bay Experience  
 - Arrive at Changi Airport and transfer to the hotel

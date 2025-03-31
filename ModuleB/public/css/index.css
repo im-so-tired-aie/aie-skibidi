@@ -12,6 +12,10 @@ h3 {
     font-size: 20px;
 }
 
+a {
+    text-decoration: none;
+}
+
 .container {
     padding: 15px;
     min-width: 100%;

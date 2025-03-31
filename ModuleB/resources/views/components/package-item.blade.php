@@ -1,6 +1,6 @@
 @isset($formattedPackage)
     @if($formattedPackage instanceof \App\Http\Controllers\FormattedPackage)
-        <div class="package">
+        <a href="{{ $formattedPackage->path }}" class="package" id="package">
             <h3>{{ $formattedPackage->title }}</h3>
 
             <div class="flex-row">
@@ -8,7 +8,7 @@
                     <p><strong>{{ $formattedPackage->duration }}</strong></p>
                     <p>{{ $formattedPackage->cost }}</p>
                 </div>
-                <img class="star" alt="star" src="{{ asset("/img/star.svg") }}" />
+                <img class="star" alt="star" id="star" src="{{ asset("/img/star-outline.svg.svg") }}" />
             </div>
 
             {{--  Cover Image  --}}
@@ -16,6 +16,20 @@
 
             <p>{{ $formattedPackage->highlights }}</p>
             <button>Add Package</button>
-        </div>
+        </a>
     @endif
 @endisset
+
+{{--<script>--}}
+{{--    document.addEventListener("DOMContentLoaded", function() {--}}
+{{--        const path = document.getElementById("package").getAttribute('data-package-path');--}}
+{{--        if (path) {--}}
+{{--            if (path === localStorage.getItem("recommended-package")) {--}}
+{{--                document.getElementById("star").src =--}}
+{{--            }--}}
+{{--        }--}}
+{{--    });--}}
+{{--    function handleRecommend() {--}}
+
+{{--    }--}}
+{{--</script>--}}

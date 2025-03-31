@@ -16,14 +16,16 @@ class TourPackageController extends Controller
             $folders[$folderName] = FileController::parseDirectory($folder);
         }
 
-//        dd($folders);
         return view("tourpackage.index", [
             "folders" => $folders
         ]);
     }
 
-    public function show() {
-
+    public function show(string $path) {
+        $parsedFile = FileController::parseDirectory("resources/{$path}");
+        return view("tourpackage.show", [
+            "package" => $parsedFile
+        ]);
     }
 
     public function create() {
