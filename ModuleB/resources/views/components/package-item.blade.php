@@ -1,6 +1,6 @@
 @isset($formattedPackage)
     @if($formattedPackage instanceof \App\Http\Controllers\FormattedPackage)
-        <a href="{{ $formattedPackage->path }}" class="package" id="package">
+        <div class="package" id="{{ $formattedPackage->path }}">
             <h3>{{ $formattedPackage->title }}</h3>
 
             <div class="flex-row">
@@ -8,28 +8,30 @@
                     <p><strong>{{ $formattedPackage->duration }}</strong></p>
                     <p>{{ $formattedPackage->cost }}</p>
                 </div>
-                <img class="star" alt="star" id="star" src="{{ asset("/img/star-outline.svg.svg") }}" />
+                <img class="star" alt="star" id="{{ $formattedPackage->path }} star" src="{{ asset("/img/star-outline.svg") }}" onclick="recommendPackage('{{ $formattedPackage->path }}')" />
             </div>
 
             {{--  Cover Image  --}}
             <img class="cover-img" alt="cover image" src="{{ Storage::url($formattedPackage->coverImage) }}" />
 
             <p>{{ $formattedPackage->highlights }}</p>
-            <button>Add Package</button>
-        </a>
+            <a href="{{ $formattedPackage->path }}"><button>View Package</button></a>
+        </div>
     @endif
 @endisset
 
-{{--<script>--}}
-{{--    document.addEventListener("DOMContentLoaded", function() {--}}
-{{--        const path = document.getElementById("package").getAttribute('data-package-path');--}}
-{{--        if (path) {--}}
-{{--            if (path === localStorage.getItem("recommended-package")) {--}}
-{{--                document.getElementById("star").src =--}}
-{{--            }--}}
-{{--        }--}}
-{{--    });--}}
-{{--    function handleRecommend() {--}}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        if (localStorage.getItem(("recommendedPackage")) === "{{ $formattedPackage->path }}") {
+{{--            document.getElementById("{{$formattedPackage->path}}").classList.add("hidden")--}}
+            document.getElementById("{{$formattedPackage->path}} star").src = "{{ asset("/img/star.svg") }}";
+        }
+    })
 
-{{--    }--}}
-{{--</script>--}}
+    function recommendPackage(packagePath) {
+        document.getElementById(`${localStorage.getItem("recommendedPackage")} star`).src = "{{ asset("/img/star-outline.svg") }}";
+        // document.getElementById(localStorage.getItem("recommendedPackage")).classList.remove("hidden")
+        localStorage.setItem("recommendedPackage", packagePath);
+        document.getElementById(`${packagePath} star`).src = "{{ asset("/img/star.svg") }}";
+    }
+</script>
