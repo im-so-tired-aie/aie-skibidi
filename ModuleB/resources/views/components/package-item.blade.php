@@ -1,6 +1,6 @@
 @isset($formattedPackage)
     @if($formattedPackage instanceof \App\Http\Controllers\FormattedPackage)
-        <div class="package" id="{{ $formattedPackage->path }}">
+        <div class="package {{ $hidden ? "hidden" : "" }}" id="{{ $formattedPackage->path }}">
             <h3>{{ $formattedPackage->title }}</h3>
 
             <div class="flex-row">
@@ -23,14 +23,14 @@
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         if (localStorage.getItem(("recommendedPackage")) === "{{ $formattedPackage->path }}") {
-{{--            document.getElementById("{{$formattedPackage->path}}").classList.add("hidden")--}}
             document.getElementById("{{$formattedPackage->path}} star").src = "{{ asset("/img/star.svg") }}";
         }
     })
 
     function recommendPackage(packagePath) {
-        document.getElementById(`${localStorage.getItem("recommendedPackage")} star`).src = "{{ asset("/img/star-outline.svg") }}";
-        // document.getElementById(localStorage.getItem("recommendedPackage")).classList.remove("hidden")
+        if (localStorage.getItem("recommendedPackage")) {
+            document.getElementById(`${localStorage.getItem("recommendedPackage")} star`).src = "{{ asset("/img/star-outline.svg") }}";
+        }
         localStorage.setItem("recommendedPackage", packagePath);
         document.getElementById(`${packagePath} star`).src = "{{ asset("/img/star.svg") }}";
     }

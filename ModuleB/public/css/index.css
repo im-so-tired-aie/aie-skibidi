@@ -1,5 +1,10 @@
 :root {
     --primary: rgb(31, 92, 101);
+    font-family: Verdana, sans-serif;
+}
+
+body {
+    margin: 0;
 }
 
 h1, h2, h3, p {
@@ -17,8 +22,8 @@ a {
 }
 
 .container {
+    max-width: 100%;
     padding: 15px;
-    min-width: 100%;
 }
 
 .package {
@@ -70,4 +75,30 @@ button {
 
 .hidden {
     display: none;
+}
+
+.header-img {
+    width: 100%;
+    height: 45vh;
+    object-fit: cover;
+}
+
+.header {
+    position: relative;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+}
+
+.header-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.header-title {
+    font-size: 30px;
+    max-width: 500px;
 }
