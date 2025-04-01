@@ -45,36 +45,32 @@
 <body>
     <x-nav/>
     <div class="main-wrapper">
-    <h1>Criteria Management</h1>
+    <h1>User Management</h1>
     @if(Session::has('flash'))
         <div class="alert disapear">
         {{ Session::get('flash') }}
         </div>
     @endif
-    <button onclick="{window.location.href = '/admin/criteria/create';}" type="button" class="add-new-create btn btn-success">Add New Creation</button>  
+    <button onclick="{window.location.href = '/admin/users/create';}" type="button" class="add-new-create btn btn-success">Add New User</button>  
     <table class="table">
         <thead class="table-dark"> <!-- Add <thead> for styling -->
             <tr>
                 <th>ID</th>
-                <th>Category</th>
-                <th>Programme</th>
-                <th>Required Hours</th>
-                <th>Required Duration</th>
-                <th>Required Project</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
                 <th>Action</th>
             </tr> 
         </thead>
         <tbody class="table-light"> <!-- Add <tbody> for styling -->
             @foreach ($Criteria as $item )
             <tr>
-                <td>{{$item["id"]}}</td>
-                <td>{{$item["category"]}}</td>
-                <td>{{$item["programme"]}}</td>
-                <td>{{$item["required_hours"]}}</td>
-                <td>{{$item["required_duration"]}}</td>
-                <td>{{$item["required_project"]}}</td>
-                <td><button onclick="{window.location.href='/admin/criteria/{{$item['id']}}/edit'}" type="button" class="btn btn-warning">Edit</button>
-                    <button onclick="{window.location.href='/admin/criteria/{{$item['id']}}/delete'}" type="button" class="btn btn-danger">Delete</button></td>
+                <td>{{$item->id}}</td>
+                <td>{{$item->name}}</td>
+                <td>{{$item->email}}</td>
+                <td>{{$item->role}}</td>
+                <td><button onclick="{window.location.href='/admin/users/{{$item->id}}/update'}" type="button" class="btn btn-warning">Edit</button>
+                    <button onclick="{window.location.href='/admin/users/{{$item->id}}/delete'}" type="button" class="btn btn-danger">Delete</button></td>
             </tr>
             @endforeach
         </tbody>

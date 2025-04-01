@@ -25,41 +25,37 @@
       } 
       }
     </style>
-    <title>Create a new table</title>
+    <title>Create a new user</title>
 </head>
 <body>
   <x-nav/>
   <div class="main-wrapper">
   <div class="form-wrapper">
-    <h1 class="header">Add New Criterion</h1>
-    <form method="post" action="/criteria/create">
+    <h1 class="header">Add New User</h1>
+    <form method="post" action="/users/create">
       @csrf
         <div class="mb-3">
-          <label for="category" class="form-label">Category</label>
-          <input name="category" type="text" class="form-control" id="category">
+          <label for="name" class="form-label">Name</label>
+          <input name="name" type="text" class="form-control" id="name">
         </div>
         <div class="mb-3">
-          <label for="programme" class="form-label">Programme</label>
-          <input name="programme" type="text" class="form-control" id="programme">
+          <label for="email" class="form-label">Email</label>
+          <input name="email" type="text" class="form-control" id="email">
         </div>
         <div class="mb-3">
-            <label for="required_hours" class="form-label">Requried Hours</label>
-            <input name="required_hours" type="text" class="form-control" id="required_hours">
+            <label for="password" class="form-label">Password</label>
+            <input name="password" type="password" class="form-control" id="password">
           </div>
           <div class="mb-3">
-            <label for="required_duration" class="form-label">Required Duration</label>
-            <input name="required_duration" type="text" class="form-control" id="required_duration">
-          </div>
-          <div class="mb-3">
-            <label for="required_project" class="form-label">Required Project</label>
-            <input name="required_project" type="text" class="form-control" id="required_project">
+            <label for="role" class="form-label">Role</label>
+            <input name="role" type="text" class="form-control" id="role">
           </div>
         {{-- <div class="mb-3 form-check">
           <input type="checkbox" class="form-check-input" id="exampleCheck1">
           <label class="form-check-label" for="exampleCheck1">Check me out</label>
         </div> --}}
         <button type="submit" class="btn btn-primary">Save</button>
-        <button onclick="{event.preventDefault();window.location.href = '/admin/criteria'}" class="btn btn-secondary">Close</button>
+        <button onclick="{event.preventDefault();window.location.href = '/admin/users'}" class="btn btn-secondary">Close</button>
       </form>
     </div>
   </div>
