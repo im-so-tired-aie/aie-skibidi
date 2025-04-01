@@ -115,4 +115,38 @@ class Usercontroller extends Controller
             return response($user,200);
         }
     }
+    public function userconsoleview(){
+        $user = User::all();
+        return view("user.index",["Criteria"=>$user]);
+    }
+    public function usercreateview(){
+        return view("user.create");
+    }
+    public function createuser(Request $request){
+        $clean_data = [];
+        $clean_data["name"] = $request -> name;
+        $clean_data["email"] = $request->email;
+        $clean_data["password"] =  $request->password;
+        $clean_data["role"] = $request->role;
+        $current_date = date('Y-m-d H:i:s');
+        $clean_data["created_at"] = $current_date;
+        $user = User::create($clean_data);  
+        return redirect("/admin/users")->with("flash",value: "user ". $user->name." created successfully!");
+    }
+    public function userupdate(Request $request, $id){
+        $clean_data = [];
+        $clean_data["name"] = $request -> name;
+        $clean_data["email"] = $request->email;
+        $clean_data["role"] = $request->role;
+        $user = User::where("id",$id)->update($clean_data);  
+        return redirect("/admin/users")->with("flash",value:"User ". $request -> username." updated successfully!");
+    }
+    public function userupdateview($id){
+        $user = User::where("id",$id)->get()->first();
+        return view("user.edit",["user"=>$user]);
+    }
+    public function userdeleteview($id){
+        $user = User::where("id",$id)->delete();
+        return redirect("/admin/users")->with("flash",value:"User of ID [".$id."] deleted successfully!");
+    }
 }
