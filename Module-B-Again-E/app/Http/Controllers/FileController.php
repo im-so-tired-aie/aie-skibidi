@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class FileData {
     public string $title;
@@ -77,19 +78,21 @@ class FileController extends Controller
             }
         }
 
-        $newContent = [];
-        foreach(explode("\r\n", $unstructuredContent) as $line) {
-            $text = $line;
-            preg_replace("/\*\*(.*)\*\*/", "<b>$1</b>", $text);
-            if (str_contains($line, "#")) {
-                $newContent[] = "<h1>" . str_replace("#", "", $line) . "</h1>";
-            } else if (str_contains($line, "##")) {
-                $newContent[] = "<h2>" . str_replace("##", "", $line) . "</h2>";
-            } else if (str_contains($line, "- ")) {
-                $newContent[] = "<li>" . str_replace("- ", "", $line) . "</li>";
-            }
-        }
-        $fileData->content = join("", $newContent);
+        $fileData->content = Str::markdown($unstructuredContent);
+
+//        $newContent = [];
+//        foreach(explode("\r\n", $unstructuredContent) as $line) {
+//            $text = $line;
+//            preg_replace("/\*\*(.*)\*\*/", "<b>$1</b>", $text);
+//            if (str_contains($line, "#")) {
+//                $newContent[] = "<h1>" . str_replace("#", "", $line) . "</h1>";
+//            } else if (str_contains($line, "##")) {
+//                $newContent[] = "<h2>" . str_replace("##", "", $line) . "</h2>";
+//            } else if (str_contains($line, "- ")) {
+//                $newContent[] = "<li>" . str_replace("- ", "", $line) . "</li>";
+//            }
+//        }
+//        $fileData->content = join("", $newContent);
         return $fileData;
     }
 }
