@@ -36,7 +36,7 @@ class DiaryController extends Controller
 
     public function diariesByEnrolment(Request $request) {
         try {
-            $enrolment = $request->user()->enrolment;
+            $enrolment = auth()->user()->enrolment;
             return response()->json(DiaryResource::collection($enrolment->diaries), 200);
         } catch (Exception $e) {
             return response()->json([

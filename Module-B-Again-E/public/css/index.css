@@ -1,0 +1,136 @@
+:root {
+    --primary: rgb(31, 92, 101);
+}
+body {
+    margin: 0;
+    font-family: Verdana, sans-serif;
+}
+
+.star {
+    height: 25px;
+    width: 25px;
+    border-radius: 50px;
+    background: white;
+    border: 1px solid var(--primary);
+}
+
+.selected-star {
+    background: var(--primary);
+}
+
+header {
+    position: relative;
+}
+
+header .cover {
+    width: 100%;
+    height: 70vh;
+    object-fit: cover;
+}
+
+header .icon {
+    height: 50px;
+    width: 50px;
+}
+
+header .container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+header h1 {
+    color: white;
+    max-width: 400px;
+}
+
+.main {
+    padding: 20px;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 25px;
+}
+
+.main h1, h2, h3, p {
+    margin: 0;
+    color: var(--primary);
+}
+
+h2 {
+    margin: 15px 0;
+}
+
+.package {
+    min-width: 300px;
+    border-radius: 10px;
+    /*box-shadow: black;*/
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.create-new {
+    max-width: 500px;
+    border-radius: 10px;
+    padding: 10px;
+    background: #eee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.create-new .plus {
+    font-size: 50px;
+}
+
+.package .title {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--primary);
+}
+
+.package .sub {
+    font-size: 13px;
+}
+
+.package .cover {
+    border-radius: 5px;
+    max-height: 150px;
+    width: 100%;
+    object-fit: cover;
+    margin: 5px 0;
+}
+
+.package .highlights {
+    margin: 5px 0;
+}
+
+.package .btn {
+    background: var(--primary);
+    padding: 5px 10px;
+    color: white;
+    font-weight: 600;
+    border-radius: 60px;
+    text-decoration: none;
+    width: 100%;
+    display: block;
+    border: 0;
+}
+
+.hidden {
+    display: none;
+}

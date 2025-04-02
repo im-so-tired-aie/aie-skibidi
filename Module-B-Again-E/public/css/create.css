@@ -1,0 +1,63 @@
+:root {
+    --primary: rgb(31, 92, 101);
+}
+
+body {
+    margin: 0;
+    font-family: Verdana, sans-serif;
+}
+
+header {
+    width: 100%;
+    font-size: 20px;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    padding: 20px 10px;
+    background: var(--primary);
+}
+
+.content {
+    padding: 40px;
+}
+
+h1, h2, h3 {
+    color: var(--primary);
+}
+
+h1 {
+    font-size: 30px;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px 0;
+    gap: 50px;
+}
+
+textarea {
+    flex-grow: 1;
+    border: 1px solid var(--primary);
+    border-radius: 5px;
+    color: var(--primary);
+}
+
+.stuff {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.jfhdubufhdv {
+    margin-top: 20px;
+}
+form button {
+    border: 2px solid var(--primary);
+    border-radius: 50px;
+    padding: 5px 20px;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--primary);
+    background: white;
+}

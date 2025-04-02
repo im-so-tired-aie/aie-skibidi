@@ -16,13 +16,14 @@ class UserController extends Controller
 {
     public function create(Request $request) {
         try {
+            $token = hash("sha256", $request->email . now());
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => $request->password,
                 'role' => $request->role,
+                'remember_token' => $token,
             ]);
-            $token = $user->createToken($request->email)->plainTextToken;
             $program = Programmes::where('id', $request->programme_id)->first();
             Enrolments::create([
                 'name' => $request->name,
@@ -68,7 +69,11 @@ class UserController extends Controller
                 ], 403);
             }
 
-            $token = $user->createToken($request->email)->plainTextToken;
+            $token = hash("sha256", $user->email . now());
+            $user->update([
+                "remember_token" => $token,
+            ]);
+            auth()->login($user);
             return response()->json([
                 "token" => $token,
                 "user" => new UserResource($user)
@@ -82,13 +87,15 @@ class UserController extends Controller
     }
 
     public function logout(Request $request) {
-        $request->user()->currentAccessToken()->delete();
+        auth()->user()->update([
+            "remember_token" => null,
+        ]);
         return response()->json([
             "message" => "Logged out successfully. Token is now invalid."
         ]);
     }
 
     public function show(Request $request) {
-        return response()->json(new UserResource($request->user()));
+        return response()->json(new UserResource(auth()->user()));
     }
 }
