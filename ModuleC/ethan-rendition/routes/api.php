@@ -18,6 +18,9 @@ Route::post('login', [UserController::class, 'login']);
 Route::middleware(\App\Http\Middleware\AuthMiddleware::class)->group(function () {
    Route::get('logout', [UserController::class, 'logout']);
    Route::get('user', [UserController::class, 'show']);
+   Route::get('user/all', [UserController::class, 'index']);
+   Route::delete('user/{user}', [UserController::class, 'delete']);
+   Route::put('user/{user}', [UserController::class, 'update']);
 
     // Categories
     Route::get('categories', [CategoriesController::class, 'index']);
@@ -31,6 +34,7 @@ Route::middleware(\App\Http\Middleware\AuthMiddleware::class)->group(function ()
     // Diary Entries
     Route::post('diaries', [DiaryController::class, 'create']);
     Route::get('diaries_by_enrolment', [DiaryController::class, 'diariesByEnrolment']);
+    Route::get('diaries_progress_by_enrolment', [DiaryController::class, 'diariesProgressByEnrolment']);
 
     // Manage Diaries
     Route::prefix('diary')->group(function () {

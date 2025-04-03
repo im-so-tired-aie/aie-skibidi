@@ -15,4 +15,8 @@ class Enrolments extends Model
     function diaries() {
         return $this->hasMany(DiaryEntries::class, 'enrolment_id');
     }
+
+    function program() {
+        return $this->belongsTo(Programmes::class, 'programme_id');
+    }
 }

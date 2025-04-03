@@ -24,20 +24,22 @@ class UserController extends Controller
                 'role' => $request->role,
                 'remember_token' => $token,
             ]);
-            $program = Programmes::where('id', $request->programme_id)->first();
-            Enrolments::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'user_id' => $user->id,
-                'nric' => $request->nric,
-                'address' => $request->address,
-                'contact_no' => $request->contact_no,
-                "dob" => $request->dob,
-                "gender" => $request->gender,
-                "race" => $request->race,
-                "nationality" => $request->nationality,
-                "programme_id" => $program->id
-            ]);
+            if (isset($request->nric)) {
+                $program = Programmes::where('id', $request->programme_id)->first();
+                Enrolments::create([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'user_id' => $user->id,
+                    'nric' => $request->nric,
+                    'address' => $request->address,
+                    'contact_no' => $request->contact_no,
+                    "dob" => $request->dob,
+                    "gender" => $request->gender,
+                    "race" => $request->race,
+                    "nationality" => $request->nationality,
+                    "programme_id" => $program->id
+                ]);
+            }
 
             return response()->json([
                 "status" => true,
@@ -62,12 +64,12 @@ class UserController extends Controller
                 ], 404);
             }
 
-            if (Hash::check($request->password, $user->password)) {
-                return response()->json([
-                    "status" => false,
-                    "message" => "Incorrect password",
-                ], 403);
-            }
+//            if (Hash::check($request->password, $user->password)) {
+//                return response()->json([
+//                    "status" => false,
+//                    "message" => "Incorrect password",
+//                ], 403);
+//            }
 
             $token = hash("sha256", $user->email . now());
             $user->update([
@@ -95,7 +97,20 @@ class UserController extends Controller
         ]);
     }
 
+    public function index() {
+        return response()->json(UserResource::collection(User::all()));
+    }
+
     public function show(Request $request) {
         return response()->json(new UserResource(auth()->user()));
+    }
+
+    public function delete(User $user) {
+        $user->delete();
+        return response()->json(null, 204);
+    }
+
+    public function update(Request $request) {
+
     }
 }
