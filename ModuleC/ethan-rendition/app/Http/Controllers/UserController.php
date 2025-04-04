@@ -64,12 +64,12 @@ class UserController extends Controller
                 ], 404);
             }
 
-//            if (Hash::check($request->password, $user->password)) {
-//                return response()->json([
-//                    "status" => false,
-//                    "message" => "Incorrect password",
-//                ], 403);
-//            }
+            if (!Hash::check($request->password, $user->password)) {
+                return response()->json([
+                    "status" => false,
+                    "message" => "Incorrect password",
+                ], 403);
+            }
 
             $token = hash("sha256", $user->email . now());
             $user->update([

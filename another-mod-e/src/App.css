@@ -1,0 +1,87 @@
+:root {
+  --primary: green;
+  --background: #ddd;
+  --container: white;
+  --highlight: gold;
+  --button: green;
+}
+
+[media-theme='dark'] {
+  --primary: #555;
+  --background: #333;
+  --container: #444;
+  --highlight: green;
+  --button: green;
+  color: white;
+}
+
+h1, h2, p {
+  margin: 0;
+}
+
+header {
+  background-color: var(--primary);
+  padding: 20px 10px;
+  font-weight: 600;
+  color: white;
+  position: relative;
+}
+
+header .btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.App {
+  text-align: center;
+  background-color: var(--background);
+  min-height: 100vh;
+}
+
+.content {
+  padding: 20px 60px;
+}
+
+.container {
+  padding: 15px;
+  text-align: left;
+  background-color: var(--container);
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.form {  
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.container .title {
+  margin-bottom: 15px
+}
+
+.container input, select {
+  flex-grow: 1;
+  padding: 10px 15px;
+  border: 2px solid #888;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.container .submit {
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  background: var(--primary);
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+}
+
+@media only screen and (max-width: 700px) {
+  .content {
+    padding: 10px 20px;
+  }
+}

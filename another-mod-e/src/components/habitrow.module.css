@@ -1,0 +1,44 @@
+.habitRow {
+    margin: 10px 0;
+    overflow-y: scroll;
+}
+
+.flexRowSB {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.flexRow {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.deleteBtn {
+    color: white;
+    padding: 5px 10px;
+    background-color: red;
+    border-radius: 5px;
+    border: none;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 5px;
+}
+
+th, td {
+    border: 1px solid grey;
+    padding: 5px;
+    text-align: center;
+}
+
+.streakCell {
+    font-size: 20px;
+    font-weight: 600;
+}
+.streakCell.highlighted {
+    background-color: var(--highlight);
+}

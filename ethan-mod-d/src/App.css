@@ -1,0 +1,29 @@
+.main {
+  background-color: white;
+  padding: 25px;
+}
+
+p {
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding-bottom: 20px;
+}
+
+.overflow {
+  overflow-x: scroll;
+}
+
+.border {
+  border-bottom: 2px solid darkblue;
+}
+
+select {
+  padding: 10px 20px;
+  width: 250px;
+}
